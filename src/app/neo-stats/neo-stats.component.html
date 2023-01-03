@@ -1,0 +1,76 @@
+<div class="container">
+
+    <div>
+      <h1 class="heading p-5 m-0 text-center bg-dark text-white"> Asteroid - Neo Stats </h1>
+      <h3 class="heading p-0 m-0 text-center bg-dark text-white">Please select date range having difference of 4 days</h3>
+    </div>
+    <div class="row mb-5 align-items-end">
+      <div class="col-md-12 w-50">
+        <form #statsPost="ngForm" (ngSubmit)="onSubmitForm(statsPost.value)">
+
+            <div class="form-row align-items-end">
+                <div class="col-sm-4 my-1">
+                   <label for="startdate">Start Date</label>
+                <input type="date" class="form-control" id="startdate" name="startdate" value="name" ngModel>
+                </div>
+                <div class="col-sm-4 my-1">
+                    <label for="enddate">End Date</label>
+                    <input type="date" class="form-control" id="enddate" name="enddate" value="name" ngModel>
+                </div>
+                <div class="col-sm-4 my-1">
+                    <input type="submit" value="Submit" class="btn btn-primary px-5" />
+                </div>
+              </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+           <div class="speeds mb-5">
+            <p class="para" style="font-size: 18px">Fastest Asteroid in km/Hr</p>
+            <div class="row">
+                <div class="col-12 col-md-6 d-flex">
+                    <p class="w-25">ID</p>
+                    <p class="w-75 border border-info rounded speed-value">{{ speed.Id }}</p>
+                </div>
+                <div class="col-12 col-md-6 d-flex">
+                    <p class="w-25">Velocity km/Hr</p>
+                    <p class="w-75 border border-info rounded speed-value">{{ speed.hihgestVelocity }}</p>
+                </div>
+                <div class="col-12 my-5">
+                    <div class="graph">
+                     <p class="para"> Total number of asteroids for each day of the given date range(Bar graph) </p>
+                         <div class="asteriodChart">
+                           <canvas id="asteriodChart">{{ chart }}</canvas>
+                    </div>
+                 </div>
+            </div>
+            
+           </div>
+           <div class="avaragetable my-5">
+            <p class="para" style="font-size: 18px"> Average Size of the Asteroids in kilometres </p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Maximum</th>
+                  <th scope="col">Minimum</th>
+                  <th scope="col">Avarage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let avarage of avarages">
+                  <td>{{ avarage.id }}</td>
+                  <td>{{ avarage.maxSize }}</td>
+                  <td>{{ avarage.minSize }}</td>
+                  <td>{{ avarage.avarage }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+           </div>
+        </div>
+        
+    </div>    
+  </div>
